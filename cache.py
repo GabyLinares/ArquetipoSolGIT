@@ -1,6 +1,6 @@
-class GestorCaché:
+class GestorCache:
     def __init__(self):
-        self.caché = []
+        self.cache = []
 
     def recibir_video(self, video, calidad):
         # Comprobar si el video ya está en la caché
