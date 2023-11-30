@@ -1,7 +1,7 @@
 class Comentarios:
-    def __init__(self):
+    def __init__(self, c):
         # Simulación de la base de datos de comentarios
-        self.base_de_datos = {}
+        self.comentarios = c
 
     def agregar_comentario(self, video, autor, contenido):
         # Mockup de función para añadir un comentario a la 'base de datos'

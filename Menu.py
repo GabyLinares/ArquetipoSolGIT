@@ -1,23 +1,35 @@
-import Server
+import os
+import Reproductor
 import cache as Cache
-def menu() -> bool:
+def menu(c: Cache.GestorCache) -> bool:
+    print("\n")
     print("1) Reproducir video")
     print("2) Salir")
-    option = int(input("Selecciona opción: "))
+    option = int(input("\nSelecciona opción: "))
+    os.system("clear")
     if(option == 1):
-        c = Cache.GestorCache()
-        videos = c.recibir_video()
-        print("Videos:")
+        videos = c.recibir_lista_videos()
+        print("\nVideos:")
         for vid in videos:
             print(f"- {vid}")
-        vid = int(input("¿Qué video deseas reproducir?"))
+        while True:
+            vid = int(input("\n¿Qué video deseas reproducir?\n(Presiona 0 para salir)\n -> "))
+            if(0 < vid and vid <= len(videos)):
+                break
+            elif(vid == 0):
+                return True
+            else:
+                print("OPCIÓN INVÁLIDA.")
+        Reproductor.Reproductor(cache = c, videoURL = vid)
+        
+
         
         
     elif(option == 2):
-        print("Cerrando aplicación")
+        print("\nCerrando aplicación")
         return False
     else:
-        print("Opción inválida")
+        print("\nOpción inválida")
     return True
     
 

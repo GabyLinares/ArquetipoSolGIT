@@ -1,16 +1,1 @@
-{
-    "video1":{
-        "likes":55,
-        "duration":150,
-        "comments":{
-            "nombre-random":"Bad video"
-        }
-    },
-    "video2":{
-        "likes":15,
-        "duration":250,
-        "comments":{
-            "nombre-random":"Bad video"
-        }
-    }
-}
+{"video1": {"likes": 57, "duration": 15, "views": 2002, "comments": {"nombre-random": "Bad video"}}, "video2": {"likes": 16, "duration": 25, "views": 21, "comments": {"nombre-random": "Bad video"}}}
