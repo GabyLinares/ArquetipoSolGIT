@@ -4,7 +4,7 @@ class Servidor:
     __active = False
     __videos = None
     def __init__(self):
-        f = open("C:/Users/Ángel/Documents/UR 2023-2/Dis y Arq Software/ArquetipoSolGIT/database.json")
+        f = open("database.json")
         self.__videos = json.load(f)
         self.__active = True
         
@@ -19,7 +19,7 @@ class Servidor:
             return None
     
     def fetch_video(self, url: int):
-        f = open("C:/Users/Ángel/Documents/UR 2023-2/Dis y Arq Software/ArquetipoSolGIT/database.json")
+        f = open("database.json")
         self.__videos = json.load(f)
 
         if self.__active:
@@ -32,7 +32,7 @@ class Servidor:
             self.__videos[f"video{url}"]["likes"] = likes
             self.__videos[f"video{url}"]["views"] = views
             self.__videos[f"video{url}"]["comments"] = comments
-            with open('C:/Users/Ángel/Documents/UR 2023-2/Dis y Arq Software/ArquetipoSolGIT/database.json', 'w') as f:
+            with open('database.json', 'w') as f:
                 f.write(json.dumps(self.__videos))
         else:
             pass

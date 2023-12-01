@@ -1,7 +1,8 @@
 import os
 import time
 import cache as Cache
-import comentarios as Comentarios
+from comentarios import Comentarios
+import random
 
 class Reproductor:
     video = "#" # Arbitrario
@@ -9,6 +10,7 @@ class Reproductor:
 
     likes = None
     comments = None
+    comentarios_instance = Comentarios()
     views = None
     space = None
     url = None
@@ -73,17 +75,16 @@ class Reproductor:
         elif comments_opt == 2:
             print("Ingrese su comentario por favor: ")
             comentario = input("-> ")
-            self.comments.agregar_comentario(self.video, "my_user", comentario)  
-            self.comments.obtener_comentarios(self.video)  
+            self.comentarios_instance.agregar_comentario(f"user{random.randint(100, 999)}", comentario, self.comments)
+            self.cache.send(self.likes,self.views,self.comments, self.url)
+            # print(self.comments)
         else:
             print("OPCIÓN INVÁLIDA")
             time.sleep(1.5)
             self.play()
 
     def show_comments(self):
-        comentarios = self.comments.obtener_comentarios(self.video)  
-        for comentario in comentarios:
-            print(f"{comentario['autor']}: {comentario['contenido']}")
+        self.comentarios_instance.obtener_comentarios(self.comments)
 
     def update(self, liked = None):
         if(liked is not None and liked):
