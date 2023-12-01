@@ -73,15 +73,15 @@ class Reproductor:
         elif comments_opt == 2:
             print("Ingrese su comentario por favor: ")
             comentario = input("-> ")
-            self.comments.agregar_comentario(self.url, "my_user", comentario)  # Se corrigió aquí
-            self.comments.obtener_comentarios(self.url)  # Se añadió aquí
+            self.comments.agregar_comentario(self.video, "my_user", comentario)  
+            self.comments.obtener_comentarios(self.video)  
         else:
             print("OPCIÓN INVÁLIDA")
             time.sleep(1.5)
             self.play()
 
     def show_comments(self):
-        comentarios = self.comments.obtener_comentarios(self.url)  # Se corrigió aquí
+        comentarios = self.comments.obtener_comentarios(self.video)  
         for comentario in comentarios:
             print(f"{comentario['autor']}: {comentario['contenido']}")
 
