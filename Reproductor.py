@@ -36,7 +36,7 @@ class Reproductor:
         print("¿Qué acción deseas realizar?")
         print("1) Seguir viendo (añade vista)")
         print("2) Dar/quitar like (...)")
-        print("3) Ver comentarios (...)")
+        print("3) Comentarios (...)")
         print("0) Salir del video")
         opt = int(input("-> "))
         match opt:
@@ -51,14 +51,39 @@ class Reproductor:
                 self.like()
                 self.play()
             case 3:
-                Comentarios.comments(self.comments)
-                self.play()
+                print("")
+                self.handle_comments()
+                
             case 0:
                 pass
             case _:
                 print("OPCIÓN INVÁLIDA")
                 time.sleep(1.5)
                 self.play()
+
+    def handle_comments(self):
+        print("")
+        print("¿Qué acción deseas realizar?")
+        print("1) Ver comentarios")
+        print("2) Añadir un comentario")
+        comments_opt = int(input("-> "))
+
+        if comments_opt == 1:
+            self.show_comments()
+        elif comments_opt == 2:
+            print("Ingrese su comentario por favor: ")
+            comentario = input("-> ")
+            self.comments.agregar_comentario(self.url, "my_user", comentario)  # Se corrigió aquí
+            self.comments.obtener_comentarios(self.url)  # Se añadió aquí
+        else:
+            print("OPCIÓN INVÁLIDA")
+            time.sleep(1.5)
+            self.play()
+
+    def show_comments(self):
+        comentarios = self.comments.obtener_comentarios(self.url)  # Se corrigió aquí
+        for comentario in comentarios:
+            print(f"{comentario['autor']}: {comentario['contenido']}")
 
     def update(self, liked = None):
         if(liked is not None and liked):

@@ -4,17 +4,15 @@ class Comentarios:
         self.comentarios = c
 
     def agregar_comentario(self, video, autor, contenido):
-        # Mockup de función para añadir un comentario a la 'base de datos'
-        if video not in self.base_de_datos:
-            self.base_de_datos[video] = []
+        if video not in self.comentarios: 
+            self.comentarios[video] = []  
 
         comentario = {
             'autor': autor,
             'contenido': contenido
         }
 
-        self.base_de_datos[video].append(comentario)
+        self.comentarios[video].append(comentario)
 
     def obtener_comentarios(self, video):
-        # Obtener comentarios de un video seleccionado
-        pass
+        return self.comentarios.get(video, [])
